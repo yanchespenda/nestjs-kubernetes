@@ -4,8 +4,6 @@ WORKDIR /app
 
 ADD package.json /app/package.json
 
-RUN yarn config set registry http://registry.npmjs.org
-
 RUN yarn install
 
 ADD . /app
