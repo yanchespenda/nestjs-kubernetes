@@ -25,9 +25,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nestjs-example-k8s-service
+  labels:
+    app: nestjs-example-k8s-service
+  annotations:
+    dev.okteto.com/auto-ingress: "private"
 spec:
+  type: ClusterIP
   selector:
     name: nestjs-example-k8s-rs
   ports:
     - port: 3000
+      protocol: TCP
       targetPort: 3000
