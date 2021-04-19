@@ -4,10 +4,10 @@ WORKDIR /app
 
 ADD package.json /app/package.json
 
-RUN yarn install
+RUN npm
 
 ADD . /app
 
 EXPOSE 3000
 
-CMD ["yarn", "run", "start"]
+CMD ["npm", "run", "start"]
