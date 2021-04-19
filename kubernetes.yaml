@@ -1,38 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nestjs-example-k8s
+  name: hello-world
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: nestjs-example-k8s
+      app: hello-world
   template:
     metadata:
       labels:
-        app: nestjs-example-k8s
+        app: hello-world
     spec:
       containers:
-        - name: nestjs-example-k8s
-          image: yanchespenda/nestjs-docker-for-k8s
-          ports:
-            - containerPort: 3000
+      - image: yanchespenda/nestjs-docker-for-k8s
+        name: hello-world
+        ports:
+          - containerPort: 3000
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: nestjs-example-k8s-service
-  labels:
-    app: nestjs-example-k8s-service
+  name: hello-world
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
-  type: ClusterIP
+  type: ClusterIP  
   selector:
-    name: nestjs-example-k8s
+    app: hello-world
   ports:
-    - port: 3000
-      protocol: TCP
-      targetPort: 3000
+  - name: "hello-world"
+    port: 3000
