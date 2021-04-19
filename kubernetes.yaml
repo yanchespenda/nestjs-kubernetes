@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
   name: nestjs-example-k8s-rs
 spec:
@@ -28,7 +28,8 @@ metadata:
   labels:
     app: nestjs-example-k8s-service
   annotations:
-    dev.okteto.com/auto-ingress: "private"
+    dev.okteto.com/generate-host: "true"
+    dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP
   selector:
