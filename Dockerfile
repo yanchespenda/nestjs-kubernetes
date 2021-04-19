@@ -1,10 +1,10 @@
-FROM node:8-alpine
+FROM node:14-alpine
 
 WORKDIR /app
 
 ADD package.json /app/package.json
 
-RUN npm
+RUN npm install
 
 ADD . /app
 
