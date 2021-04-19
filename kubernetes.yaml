@@ -9,12 +9,11 @@ spec:
       app: nestjs-example-k8s
   template:
     metadata:
-      name: nestjs-example-k8s
       labels:
         app: nestjs-example-k8s
     spec:
       containers:
-        - name: nestjs-docker-for-k8s
+        - name: nestjs-example-k8s
           image: yanchespenda/nestjs-docker-for-k8s
           ports:
             - containerPort: 3000
@@ -28,7 +27,6 @@ metadata:
   labels:
     app: nestjs-example-k8s-service
   annotations:
-    dev.okteto.com/generate-host: "true"
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP
