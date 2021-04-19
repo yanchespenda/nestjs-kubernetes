@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nestjs-example-k8s-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nestjs-example-k8s
+  template:
+    metadata:
+      name: nestjs-example-k8s
+      labels:
+        app: nestjs-example-k8s
+    spec:
+      containers:
+        - name: nestjs-docker-for-k8s
+          image: yanchespenda/nestjs-docker-for-k8s
+          ports:
+            - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nestjs-example-k8s-service
+spec:
+  selector:
+    name: nestjs-example-k8s-rs
+  ports:
+    - port: 3000
+      targetPort: 3000
