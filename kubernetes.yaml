@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nestjs-example-k8s-rs
+  name: nestjs-example-k8s
 spec:
   replicas: 3
   selector:
@@ -33,7 +33,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    name: nestjs-example-k8s-rs
+    name: nestjs-example-k8s
   ports:
     - port: 3000
       protocol: TCP
